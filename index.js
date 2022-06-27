@@ -22,13 +22,18 @@ mongoose
     return Recipe.findOneAndUpdate(
       { title: "Rigatoni alla Genovese"},
       { duration: 100},
-      { new: true }
+      { new: true },
+      console.log("Updated Rigatoni")
     );
+  })
+  .then((response) => {
+    console.log(response)
   })
   .then((response) => {
     Recipe.deleteOne({title: "Carrot Cake"})
     console.log("Deleted carrot cake")
   })
+  mongoose.disconnect()
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
